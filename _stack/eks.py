@@ -1,3 +1,4 @@
+import aws_cdk
 from aws_cdk import Stack
 from constructs import Construct
 from aws_cdk import aws_iam
@@ -84,7 +85,8 @@ class EksStack(Stack):
             partition_key=aws_dynamodb.Attribute(name=dynamodb_partition_name,
                                                  type=aws_dynamodb.AttributeType.STRING),
             read_capacity=1,
-            write_capacity=1
+            write_capacity=1,
+            removal_policy=aws_cdk.RemovalPolicy.DESTROY  # 削除
         )
 
         # --------------------------------------------------------------
